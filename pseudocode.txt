@@ -1,0 +1,8 @@
+Rock Paper Scissors Game.
+
+The game should last for 5 rounds.
+The game should result in either Player Wins, Computer Win, or Tie!
+The result of each rounds be display showing the player and computer selections.
+The game should keep track of the Round, Player's Score and the Computer Score.
+The game should also have an image for the Player and Computer selections.
+
