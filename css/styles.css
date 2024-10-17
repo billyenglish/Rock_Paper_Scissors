@@ -4,14 +4,13 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: Permanent-Marker, Arial, Helvetica, sans-serif;
 }
 
 /* Body Section */
 
 body {
     font-size: 62.5%;
-    font-family: Permanent-Marker, Arial, Helvetica, sans-serif;
+    font-family: "Permanent Marker", Arial, Helvetica, sans-serif;
 }
 
 /* Header Section */
