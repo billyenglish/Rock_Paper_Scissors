@@ -6,3 +6,21 @@ The result of each rounds be display showing the player and computer selections.
 The game should keep track of the Round, Player's Score and the Computer Score.
 The game should also have an image for the Player and Computer selections.
 
+// Logic 
+
+let user;
+let computer;
+let userScore;
+let computerScore;
+
+if user === computer
+    return "It's a tie";
+
+else if user === "rock" && computer === "scissors ||
+   user === "scissors" && computer "paper" ||
+   user === "paper" && computer === "rock"
+    userScore++
+
+else {
+    computerScore++;
+}
