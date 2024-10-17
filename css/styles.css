@@ -78,6 +78,11 @@ header {
     font-weight: 500;
 }
 
+.selections {
+    display: flex;
+    justify-content: center;
+}
+
 /* Game Controls */
 
 .game-controls {
@@ -102,5 +107,7 @@ button img {
     width: 5rem;
 }
 
+
+/* Footer Section */
 
 
