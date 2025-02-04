@@ -2,11 +2,15 @@ let playerScore = 0;
 let computerScore = 0;
 let gameRound = 0;
 
+// Generating Computer's Random Selection Function.
+
 const getComputerSelection = function () {
     let computerChoice = ['rock', 'paper', 'scissors'];
     let genRandom = Math.floor(Math.random() * 3);
     return computerChoice[genRandom];
 }
+
+// Determining the Winner of the Round Function.
 
 const determineWinnerOfRound = function (playerSelection, computerSelection) {
 
@@ -24,6 +28,8 @@ const determineWinnerOfRound = function (playerSelection, computerSelection) {
 
 }
 
+// Declaring the Winne of the Round.
+
 const declareWinnerOfRound = function () {
 
     const roundResult = determineWinnerOfRound(player1, computer);
@@ -37,6 +43,8 @@ const declareWinnerOfRound = function () {
     }
 
 }
+
+// DOM declaration variables.
 
 const gameRounds = document.querySelector(".game-rounds");
 const gamePrompt = document.querySelector(".play-prompt");
@@ -69,6 +77,8 @@ gameButtons.forEach((buttons) => {
 
 });
 
+// Display Game Rounds Function
+
 const displayGameRounds = function (player, computer) {
 
     const getRounds = determineWinnerOfRound(player, computer);
@@ -88,6 +98,8 @@ const displayGameRounds = function (player, computer) {
 
 }
 
+// Display Game Result Function
+
 const displayGameResult = function (player, computer) {
 
     const displayWinner = determineWinnerOfRound(player, computer);
@@ -101,6 +113,8 @@ const displayGameResult = function (player, computer) {
     }
 
 }
+
+// Display Player's Image Function
 
 const displayPlayerImage = function (player) {
 
@@ -117,6 +131,8 @@ const displayPlayerImage = function (player) {
     }
 }
 
+// Display Computer's image Function
+
 const displayComputerImage = function(computer) {
 
     const computerIcon = computer;
@@ -130,6 +146,8 @@ const displayComputerImage = function(computer) {
     }
 
 }
+
+// Display Game Score Function
 
 const displayGameScore = function (player, computer) {
 
@@ -145,6 +163,8 @@ const displayGameScore = function (player, computer) {
 
 }
 
+// Display Player Selection Function
+
 const displayPlayerSelection = function (playerSelection) {
 
     const playerSelect = playerSelection;
@@ -159,6 +179,8 @@ const displayPlayerSelection = function (playerSelection) {
 
 }
 
+// Display Computer Selection Function
+
 const displayComputerSelection = function (computerSelection) {
 
     const computerSelect = computerSelection;
@@ -172,6 +194,8 @@ const displayComputerSelection = function (computerSelection) {
     }
 
 }
+
+// Display Game Over Function
 
 const displayGameOver = function (player, computer) {
 
