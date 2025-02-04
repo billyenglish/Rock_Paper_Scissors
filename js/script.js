@@ -1,79 +1,185 @@
 let playerScore = 0;
 let computerScore = 0;
-let roundCount = 0;
+let gameRound = 0;
 
-const computerSelected = () => {
-    const computerOptions = ['rock', 'paper', 'scissors'];
-    const computerRandom = Math.floor(Math.random() * 3);
-    return computerOptions[computerRandom];
+const getComputerSelection = function () {
+    let computerChoice = ['rock', 'paper', 'scissors'];
+    let genRandom = Math.floor(Math.random() * 3);
+    return computerChoice[genRandom];
 }
 
-const playRound = (playerSelect, computerSelect) => {
-    const player = playerSelect;       
-    const computer = computerSelect;
+const determineWinnerOfRound = function (playerSelection, computerSelection) {
 
-    if (player === computer) {
-        return "It's A Tie!";
-    } else if (
-        player === "rock" && computerSelect === "scissors" ||
-        player === "paper" && computerSelect === "rock" ||
-        player === "scissors" && computerSelect === "paper"
-    ) {
-        playerScore++;
+    if (playerSelection == "rock" && computerSelection === "scissors") {
         return "You Win!";
+    } else if (playerSelection == "paper" && computerSelection === "rock") {
+        return "You Win!";
+    } else if (playerSelection == "scissors" && computerSelection === "paper") {
+        return "You Win!";
+    } else if (playerSelection == computerSelection) {
+        return "It's a Tie!";
     } else {
-        computerScore++;
         return "You Lose!";
     }
+
 }
 
-const playGame = (playerChoices, computerChoices) => {
+const declareWinnerOfRound = function () {
 
-    if (roundCount < 5) {
-        roundCount++;
+    const roundResult = determineWinnerOfRound(player1, computer);
+
+    if (roundResult.includes("You Win!")) {
+        return `You Win! ${player1} beats ${computer}`;
+    } else if (roundResult.includes("You Lose")) {
+        return `You Lose! ${computer} beats ${player1}`;
     } else {
-        return;
+        return `Tie! ${player1} ties ${computer}`;
     }
 
-    playRound(playerChoices, computerChoices);
-
 }
 
-const gameButtons = document.querySelectorAll('button');
+const gameRounds = document.querySelector(".game-rounds");
+const gamePrompt = document.querySelector(".play-prompt");
+const gameButtons = document.querySelectorAll("button");
+const playerImage = document.querySelector(".player-image");
+const computerImage = document.querySelector(".computer-image");
+const playerScoreDisplay = document.querySelector(".player-score");
+const computerScoreDisplay = document.querySelector(".computer-score");
+const playerChoice = document.querySelector(".player-selected");
+const computerChoice = document.querySelector(".computer-selected");
+const dialogModal = document.querySelector("dialog");
+const gameResult = document.querySelector("#game-result");
 
-gameButtons.forEach((button) => {
-    button.addEventListener("click", (e) => {
-        const player = e.target.classList.value;
-        const computer = computerSelected();
+gameButtons.forEach((buttons) => {
+    buttons.addEventListener("click", () => {
 
-        playGame(player, computer);
+        const playerSelection = buttons.className;
+        const computerSelection = getComputerSelection();
 
-        screenDisplay(roundCount, player, computer, button);
-    })
+        displayGameRounds(playerSelection, computerSelection);
+        displayGameResult(playerSelection, computerSelection);
+        displayPlayerImage(playerSelection);
+        displayGameScore(playerSelection, computerSelection);
+        displayComputerImage(computerSelection);
+        displayPlayerSelection(playerSelection);
+        displayComputerSelection(computerSelection);
+        displayGameOver(playerSelection, computerSelection);
+
+    });
+
 });
 
-const displayRounds = document.querySelector(".sub-title");
-const displayGameResult = document.querySelector(".game-prompt");
-const playerImage = document.querySelector(".player-image");
-const computerImage = document.querySelector(".player-display");
-const playerSelect = document.querySelector(".player-selected");
-const computerSelect = document.querySelector(".computer-selected")
+const displayGameRounds = function (player, computer) {
 
-const screenDisplay = (rounds, player, computer, button) => {
-    const currentRound = rounds;
-    const gameResult = playRound(player, computer);
+    const getRounds = determineWinnerOfRound(player, computer);
 
-    displayRounds.textContent = `Round ${currentRound}`;
-    displayGameResult.textContent = gameResult;
-    playerSelect.textContent = player;
-    computerSelect.textContent = computer;
+    if (gameRound > 0 || gameRound <= 5) {
+        if (getRounds.includes("You Win!")) {
+            gameRound++;
+            gameRounds.textContent = `Round ${gameRound}`;
+        } else if (getRounds.includes("You Lose!")) {
+            gameRound++;
+            gameRounds.textContent = `Round ${gameRound}`;
+        } else {
+            gameRound++;
+            gameRounds.textContent = `Round ${gameRound}`;
+        }
+    }
 
-    if (currentRound < 5) {
-        console.log(button);
+}
+
+const displayGameResult = function (player, computer) {
+
+    const displayWinner = determineWinnerOfRound(player, computer);
+
+    if (displayWinner === "You Win!") {
+        gamePrompt.innerText = displayWinner;
+    } else if (displayWinner === "You Lose!") {
+        gamePrompt.innerText = displayWinner;
+    } else {
+        gamePrompt.innerText = displayWinner;
+    }
+
+}
+
+const displayPlayerImage = function (player) {
+
+    const playerIcon = player;
+
+    if (playerIcon === "rock" || "paper" || "scissors") {
+        if (playerIcon === "rock") {
+            playerImage.innerHTML = `<img src="./images/${playerIcon}.png" class="display-icon" />`
+        } else if (playerIcon === "paper") {
+            playerImage.innerHTML = `<img src="./images/${playerIcon}.png" class="display-icon" />`
+        } else {
+            playerImage.innerHTML = `<img src="./images/${playerIcon}.png" class="display-icon" />`
+        }
     }
 }
 
-const scoreDisplay = () => {
-    console.log(playerScore, computerScore)
+const displayComputerImage = function(computer) {
+
+    const computerIcon = computer;
+
+    if (computerIcon === "rock") {
+        computerImage.innerHTML = `<img src="./images/${computerIcon}.png" class="display-icon" />`;
+    } else if (computerIcon === "paper") {
+        computerImage.innerHTML = `<img src="./images/${computerIcon}.png" class="display-icon" />`;
+    } else {
+        computerImage.innerHTML = `<img src="./images/${computerIcon}.png" class="display-icon" />`
+    }
+
 }
 
+const displayGameScore = function (player, computer) {
+
+    const gameScores = determineWinnerOfRound(player, computer);
+
+    if (gameScores.includes("You Win!")) {
+        playerScore++;
+        playerScoreDisplay.textContent = playerScore;
+    } else if (gameScores.includes("You Lose!")) {
+        computerScore++;
+        computerScoreDisplay.textContent = computerScore;
+    }
+
+}
+
+const displayPlayerSelection = function (playerSelection) {
+
+    const playerSelect = playerSelection;
+
+    if (playerSelect === "rock") {
+        playerChoice.textContent = playerSelect;
+    } else if (playerSelect === "paper") {
+        playerChoice.textContent = playerSelect;
+    } else {
+        playerChoice.textContent = playerSelect;
+    }
+
+}
+
+const displayComputerSelection = function (computerSelection) {
+
+    const computerSelect = computerSelection;
+
+    if (computerSelection === "rock") {
+        computerChoice.textContent = computerSelect;
+    } else if (computerSelection === "paper") {
+        computerChoice.textContent = computerSelect;
+    } else {
+        computerChoice.textContent = computerSelect;
+    }
+
+}
+
+const displayGameOver = function (player, computer) {
+
+    const winner = determineWinnerOfRound(player, computer);
+
+    if (playerScore == 5 || computerScore == 5) {
+        gameResult.textContent = winner;
+        dialogModal.show();
+    }
+
+}
