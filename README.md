@@ -15,5 +15,6 @@
 <ul>
     <li>You'll play a Five Round Game</li>
     <li>Player Vs. Computer</li>
+    <li>Player Selections are: Rock, Paper, and Scissors</li>
     <li>However has more points in five rounds wins else they tie</li>
 </ul>
