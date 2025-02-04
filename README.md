@@ -8,5 +8,5 @@
     <li>JavaScript</li>
 </ul>
 
-<img src="./images/Rock_Paper_Scissors_Game_Image.png" width="50">
+<img src="./images/Rock_Paper_Scissors_Game_Image.png" width="100">
 
