@@ -6,54 +6,71 @@
     <title>Rock Paper Scissors</title>
     <link rel="icon" href="./images/paper.png" type="image/gif">
     <link rel="stylesheet" href="./css/styles.css" type="text/css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap" rel="stylesheet">
 </head>
 <body>
     <header>
-        <h1 class="title">Rock Paper Scissors</h1>
+        <h1 id="game-title">Rock Paper Scissors</h1>
     </header>
     <main>
-        <h2 class="sub-title">Let's go 5 Rounds</h2>
+        <section>
+            <h2 class="game-rounds">Let's go 5 Rounds</h2>
 
-        <h3 class="game-prompt">Let's Play</h3>
+            <h3 class="play-prompt">Let's Play</h3>
 
-        <div class="game-display">
-            <div class="player-display">
-                <img class="player-image" src="./images/paper.png" alt="Paper Icon">
-                <h4 class="players">Player</h4>
-                <p class="score">Score: <span class="player-score">0</span></p>
+            <div class="players-display">
+                <span class="player-display display">
+                    <div class="player-image">
+                        <img src="./images/paper.png" alt="paper-icon" class="display-icon" />
+                    </div>
+                    <p class="players">Player</p>
+                </span>
+                <span class="computer-display display">
+                    <div class="computer-image">
+                        <img src="./images/scissors.png" alt="scissors-icon" class="display-icon" />
+                    </div>
+                    <p class="players">Computer</p>
+                </span>
             </div>
-            <div class="computer-display">
-                <img class="computer-image" src="./images/scissors.png" alt="Scissors Icon">
-                <h4 class="players">Computer</h4>
-                <p class="score">Score: <span class="computer-score">0</span> </p>
+
+            <div class="players-scores">
+                <p>Player: <span class="player-score score">0</span></p>
+                <p>Computer: <span class="computer-score score">0</span></p>
             </div>
-        </div>
 
-        <div class="selections">
-            <p class="players"><span class="player-selected">Player</span> Vs <span class="computer-selected">Computer</span></p>
-        </div>
+            <div class="players-selections">
+                <p>
+                    <span class="player-selected selected">Player</span>
+                    Vs.
+                    <span class="computer-selected selected">Computer</span>
+                </p>
+            </div>
 
-        <div class="game-controls">
-            <button class="rock" type="button">
-                <img src="./images/rock.png" alt="Rock Image">
-                Rock
-            </button>
-            <button class="paper" type="button">
-                <img src="./images/paper.png" alt="Paper Image">
-                Paper
-            </button>
-            <button class="scissors" type="button">
-                <img src="./images/scissors.png" alt="Scissors Image">
-                Scissors
-            </button>
-        </div>
+            <div class="game-controls">
+                <button class="rock" id="rock">
+                    <img src="./images/rock.png" alt="rock-icon" />
+                    Rock
+                </button>
+                <button class="paper" id="paper">
+                    <img src="./images/paper.png" alt="paper-icon" />
+                    Paper
+                </button>
+                <button class="scissors" id="scissors">
+                    <img src="./images/scissors.png" alt="scissors-icons">
+                    Scissors
+                </button>
+            </div>
+        </section>
     </main>
     <footer>
-        <p></p>
+        <p>&copy; Copyright Rock Paper Scissors by Billy English</p>
     </footer>
+    <dialog >
+        <div id="game-message">
+            <h4 id="message-title">Game Over</h4>
+            <p id="game-result">You Won!</p>
+            <button id="play-again" class="play-again">Play Again</button>
+        </div>
+    </dialog>
     <script src="./js/script.js"></script>
 </body>
 </html>
