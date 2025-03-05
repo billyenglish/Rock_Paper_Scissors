@@ -1,209 +1,175 @@
-let playerScore = 0;
-let computerScore = 0;
-let gameRound = 0;
+let currentPlayerScore = 0;
+let currentComputerScore = 0;
+let currentRound = 0;
 
-// Generating Computer's Random Selection Function.
+const playerSelection = function (playerSelect) {
+    let currentSelection = playerSelect;
+    return currentSelection;
+};
 
-const getComputerSelection = function () {
-    let computerChoice = ['rock', 'paper', 'scissors'];
-    let genRandom = Math.floor(Math.random() * 3);
-    return computerChoice[genRandom];
+const computerSelection = function () {
+    const randomSelection = Math.floor(Math.random() * 3);
+    const selectionOption = ["rock", "paper", "scissors"];
+    return selectionOption[randomSelection];
 }
 
-// Determining the Winner of the Round Function.
+const generateGameResult = function (playerSelect, computerSelect) {
 
-const determineWinnerOfRound = function (playerSelection, computerSelection) {
+    const playerSelected = playerSelection("rock");
+    const computerSelected = computerSelection();
 
-    if (playerSelection == "rock" && computerSelection === "scissors") {
-        return "You Win!";
-    } else if (playerSelection == "paper" && computerSelection === "rock") {
-        return "You Win!";
-    } else if (playerSelection == "scissors" && computerSelection === "paper") {
-        return "You Win!";
-    } else if (playerSelection == computerSelection) {
-        return "It's a Tie!";
+    if (
+        playerSelected === "rock" && computerSelected === "scissors" ||
+        playerSelected === "paper" && computerSelected === "rock" ||
+        playerSelected === "scissors" && computerSelected === "paper"
+    ) {
+        return `You Win! ${playerSelected} beats ${computerSelected}`;
+    } else if (
+        playerSelected === computerSelected
+    ) {
+        return `It's a Draw! Player Ties`;
     } else {
+        return `You Lose! Computer beats Player`;
+    }
+
+}
+
+const validateWinnerOfGame = function (playerSelect, computerSelect) {
+    
+    const gameWinner = generateGameResult(playerSelect, computerSelect);
+
+    if (gameWinner.includes("You Win!")) {
+        return "You Win!";
+    } else if (gameWinner.includes("You Lose!")) {
         return "You Lose!";
-    }
-
-}
-
-// Declaring the Winne of the Round.
-
-const declareWinnerOfRound = function () {
-
-    const roundResult = determineWinnerOfRound(player1, computer);
-
-    if (roundResult.includes("You Win!")) {
-        return `You Win! ${player1} beats ${computer}`;
-    } else if (roundResult.includes("You Lose")) {
-        return `You Lose! ${computer} beats ${player1}`;
     } else {
-        return `Tie! ${player1} ties ${computer}`;
+        return "It's a Draw!";
     }
 
 }
 
-// DOM declaration variables.
+// The Declaration for DOM Manipulation variables.
 
-const gameRounds = document.querySelector(".game-rounds");
-const gamePrompt = document.querySelector(".play-prompt");
-const gameButtons = document.querySelectorAll("button");
-const playerImage = document.querySelector(".player-image");
-const computerImage = document.querySelector(".computer-image");
-const playerScoreDisplay = document.querySelector(".player-score");
-const computerScoreDisplay = document.querySelector(".computer-score");
-const playerChoice = document.querySelector(".player-selected");
-const computerChoice = document.querySelector(".computer-selected");
+const displayRound = document.querySelector(".round-display");
+const currentGameResult = document.querySelector(".current-game-result");
+const playersImages = document.querySelector(".player-images");
+const computerImages = document.querySelector(".computer-images");
+const playerScore = document.querySelector(".player-score");
+const computerScore = document.querySelector(".computer-score");
+const gameButtons = document.querySelectorAll('button');
+const gameSelection = document.querySelector(".game-selection");
+const declaredWinner = document.querySelector(".declared-winner");
+const rockButton = document.querySelector("#rock");
+const paperButton = document.querySelector("#paper");
+const scissorsButton = document.querySelector("#scissors");
 const dialogModal = document.querySelector("dialog");
-const gameResult = document.querySelector("#game-result");
+const playButton = document.querySelector("#play-again");
+const playerIcon = document.querySelector(".player-images");
+const computerIcon = document.querySelector(".computer-images")
 
 gameButtons.forEach((buttons) => {
     buttons.addEventListener("click", () => {
 
-        const playerSelection = buttons.className;
-        const computerSelection = getComputerSelection();
+        const playerSelect = playerSelection(buttons.className);
+        const computerSelect = computerSelection();
 
-        displayGameRounds(playerSelection, computerSelection);
-        displayGameResult(playerSelection, computerSelection);
-        displayPlayerImage(playerSelection);
-        displayGameScore(playerSelection, computerSelection);
-        displayComputerImage(computerSelection);
-        displayPlayerSelection(playerSelection);
-        displayComputerSelection(computerSelection);
-        displayGameOver(playerSelection, computerSelection);
-
+        displayGameRounds(playerSelect, computerSelect);
+        displaySelections(playerSelect, computerSelect);
+        displayScore(playerSelect, computerSelect);
+        displayPlayerDecision(playerSelect, computerSelect);
     });
-
 });
 
-// Display Game Rounds Function
+const displayGameRounds = function (playerSelect, computerSelect) {
 
-const displayGameRounds = function (player, computer) {
+    const gameRounds = generateGameResult(playerSelect, computerSelect);
 
-    const getRounds = determineWinnerOfRound(player, computer);
-
-    if (gameRound > 0 || gameRound <= 5) {
-        if (getRounds.includes("You Win!")) {
-            gameRound++;
-            gameRounds.textContent = `Round ${gameRound}`;
-        } else if (getRounds.includes("You Lose!")) {
-            gameRound++;
-            gameRounds.textContent = `Round ${gameRound}`;
-        } else {
-            gameRound++;
-            gameRounds.textContent = `Round ${gameRound}`;
-        }
-    }
-
-}
-
-// Display Game Result Function
-
-const displayGameResult = function (player, computer) {
-
-    const displayWinner = determineWinnerOfRound(player, computer);
-
-    if (displayWinner === "You Win!") {
-        gamePrompt.innerText = displayWinner;
-    } else if (displayWinner === "You Lose!") {
-        gamePrompt.innerText = displayWinner;
+    if (gameRounds.includes("You Win!")) {
+        currentRound++;
+    } else if (gameRounds.includes("You Lose!")) {
+        currentRound++;
     } else {
-        gamePrompt.innerText = displayWinner;
+        currentRound++;
+    }
+
+    displayRound.innerText = `Round ${currentRound}`;
+
+}
+
+const displaySelections = function (playerSelect, computerSelect) {
+    
+    const gameResult = generateGameResult(playerSelect, computerSelect);
+
+    if (gameResult) {
+        currentGameResult.innerHTML = `${gameResult}`;
     }
 
 }
 
-// Display Player's Image Function
+const displayGameIcons = function (playerIcons, computerIcons) {
 
-const displayPlayerImage = function (player) {
-
-    const playerIcon = player;
-
-    if (playerIcon === "rock" || "paper" || "scissors") {
-        if (playerIcon === "rock") {
-            playerImage.innerHTML = `<img src="./images/${playerIcon}.png" class="display-icon" />`
-        } else if (playerIcon === "paper") {
-            playerImage.innerHTML = `<img src="./images/${playerIcon}.png" class="display-icon" />`
-        } else {
-            playerImage.innerHTML = `<img src="./images/${playerIcon}.png" class="display-icon" />`
-        }
-    }
 }
 
-// Display Computer's image Function
+const displayScore = function (playerSelect, computerSelect) {
+    
+    const declareWinner = validateWinnerOfGame(playerSelect, computerSelect);
 
-const displayComputerImage = function(computer) {
+    if (declareWinner === "You Win!") {
+        currentPlayerScore++;
+    } else if (declareWinner === "You Lose!") {
+        currentComputerScore++;
+    }
 
-    const computerIcon = computer;
+    playerScore.innerText = currentComputerScore;
+    computerScore.innerText = currentPlayerScore;
 
-    if (computerIcon === "rock") {
-        computerImage.innerHTML = `<img src="./images/${computerIcon}.png" class="display-icon" />`;
-    } else if (computerIcon === "paper") {
-        computerImage.innerHTML = `<img src="./images/${computerIcon}.png" class="display-icon" />`;
+    if (currentPlayerScore == 5 || currentComputerScore == 5) {
+        displayModalWinner(currentPlayerScore, computerScore);
     } else {
-        computerImage.innerHTML = `<img src="./images/${computerIcon}.png" class="display-icon" />`
+        return;
     }
 
 }
 
-// Display Game Score Function
-
-const displayGameScore = function (player, computer) {
-
-    const gameScores = determineWinnerOfRound(player, computer);
-
-    if (gameScores.includes("You Win!")) {
-        playerScore++;
-        playerScoreDisplay.textContent = playerScore;
-    } else if (gameScores.includes("You Lose!")) {
-        computerScore++;
-        computerScoreDisplay.textContent = computerScore;
+const displayPlayerDecision = function (playerSelect, computerSelect) {
+    
+    if (playerSelect && computerSelect) {
+        gameSelection.innerText = `${playerSelect} vs ${computerSelect}`;
     }
 
 }
 
-// Display Player Selection Function
-
-const displayPlayerSelection = function (playerSelection) {
-
-    const playerSelect = playerSelection;
-
-    if (playerSelect === "rock") {
-        playerChoice.textContent = playerSelect;
-    } else if (playerSelect === "paper") {
-        playerChoice.textContent = playerSelect;
-    } else {
-        playerChoice.textContent = playerSelect;
-    }
-
-}
-
-// Display Computer Selection Function
-
-const displayComputerSelection = function (computerSelection) {
-
-    const computerSelect = computerSelection;
-
-    if (computerSelection === "rock") {
-        computerChoice.textContent = computerSelect;
-    } else if (computerSelection === "paper") {
-        computerChoice.textContent = computerSelect;
-    } else {
-        computerChoice.textContent = computerSelect;
-    }
-
-}
-
-// Display Game Over Function
-
-const displayGameOver = function (player, computer) {
-
-    const winner = determineWinnerOfRound(player, computer);
-
+const displayModalWinner = function (playerScore, computerScore) {
+    
     if (playerScore == 5 || computerScore == 5) {
-        gameResult.textContent = winner;
-        dialogModal.show();
+        [rockButton, paperButton, scissorsButton].forEach(button => button.disabled = true);
+
+        if (dialogModal.style.display == "") {
+            dialogModal.showModal();
+        }
     }
 
 }
+
+playButton.addEventListener("click", () => {
+
+    displayRound.textContent = "lets go 5 rounds";
+    currentGameResult.textContent = "let's play !"
+    playerScore.textContent = 0;
+    computerScore.textContent = 0;
+    gameSelection.textContent = "player vs. computer";
+
+    if (playButton.id == "play-again") {
+        [rockButton, paperButton, scissorsButton].forEach(button => button.disabled = false);
+        currentRound = 0;
+        currentPlayerScore = 0;
+        currentComputerScore = 0;
+        displayRound.textContent = "lets go 5 rounds";
+        currentGameResult.textContent = "let's play !"
+        playerScore.textContent = 0;
+        computerScore.textContent = 0;
+        gameSelection.textContent = "player vs. computer";
+        dialogModal.close();
+    }
+
+});
