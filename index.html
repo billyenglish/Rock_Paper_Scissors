@@ -4,73 +4,78 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rock Paper Scissors</title>
-    <link rel="icon" href="./images/paper.png" type="image/gif">
-    <link rel="stylesheet" href="./css/styles.css" type="text/css">
+    <link rel="stylesheet" href="./styles.css" type="text/css">
+    <link rel="icon" type="image/x-icon" href="./images/paper.png">
 </head>
 <body>
-    <header>
-        <h1 id="game-title">Rock Paper Scissors</h1>
-    </header>
-    <main>
-        <section>
-            <h2 class="game-rounds">Let's go 5 Rounds</h2>
+    <div class="container">
+        <header>
+            <h1 class="game-title">Rock Paper Scissors</h1>
+        </header>
+        <main>
+            <section class="game-interface">
+                <div class="game-prompts">
+                    <h2 class="round-display">let's go 5 rounds</h2>
 
-            <h3 class="play-prompt">Let's Play</h3>
+                    <h3 class="current-game-result">let's play !</h3>
+                </div>
 
-            <div class="players-display">
-                <span class="player-display display">
-                    <div class="player-image">
-                        <img src="./images/paper.png" alt="paper-icon" class="display-icon" />
+                <div>
+                    <div class="game-players-icons">
+                        <figure class="player-image players-images">
+                            <img class="game-image player-images" src="./images/paper.png" alt="Paper Icon">
+                            <figcaption class="player players-title">Player</figcaption>
+                        </figure>
+
+                        <figure class="computer-image players-images">
+                            <img class="game-image computer-images" src="./images/scissors.png" alt="Scissors Icon">
+                            <figcaption class="computer players-title">Computer</figcaption>
+                        </figure>
                     </div>
-                    <p class="players">Player</p>
-                </span>
-                <span class="computer-display display">
-                    <div class="computer-image">
-                        <img src="./images/scissors.png" alt="scissors-icon" class="display-icon" />
-                    </div>
-                    <p class="players">Computer</p>
-                </span>
-            </div>
+                </div>
 
-            <div class="players-scores">
-                <p>Player: <span class="player-score score">0</span></p>
-                <p>Computer: <span class="computer-score score">0</span></p>
-            </div>
+                <div class="player-scores">
+                    <p class="players-scores">player: <span class="player-score">0</span></p>
+                    <p class="players-scores">computer: <span class="computer-score">0</span></p>
+                </div>
 
-            <div class="players-selections">
-                <p>
-                    <span class="player-selected selected">Player</span>
-                    Vs.
-                    <span class="computer-selected selected">Computer</span>
-                </p>
-            </div>
+                <div class="player-selection">
+                    <p class="game-selection">
+                        <span class="player-selected">Player</span>
+                        vs.
+                        <span class="computer-selected">Computer</span>
+                    </p>
+                </div>
 
-            <div class="game-controls">
-                <button class="rock" id="rock">
-                    <img src="./images/rock.png" alt="rock-icon" />
-                    Rock
-                </button>
-                <button class="paper" id="paper">
-                    <img src="./images/paper.png" alt="paper-icon" />
-                    Paper
-                </button>
-                <button class="scissors" id="scissors">
-                    <img src="./images/scissors.png" alt="scissors-icons">
-                    Scissors
-                </button>
+                <div class="game-controls">
+                    <button class="rock" id="rock" type="button">
+                        <img src="./images/rock.png" alt="Rock Button Icon">
+                        Rock
+                    </button>
+                    <button class="paper" id="paper" type="button">
+                        <img src="./images/paper.png" alt="Paper Button Icon">
+                        Paper
+                    </button>
+                    <button class="scissors" id="scissors" type="button">
+                        <img src="./images/scissors.png" alt="Scissors Button Icon">
+                        Scissors
+                    </button>
+                </div>
+            </section>
+        </main>
+        <footer>
+            <p>&copy; copyright rock paper scissors by billy english</p>
+        </footer>
+    </div>
+    <dialog>
+        <div class="dialog-box">
+            <h4 class="declared-gameover">Game Over</h4>
+            <h5 class="declared-winner">Player Wins!</h5>
+            <div class="button-contaniner">
+                <button id="play-again">Play Again !</button>
             </div>
-        </section>
-    </main>
-    <footer>
-        <p>&copy; Copyright Rock Paper Scissors by Billy English</p>
-    </footer>
-    <dialog >
-        <div id="game-message">
-            <h4 id="message-title">Game Over</h4>
-            <p id="game-result">You Won!</p>
-            <button id="play-again" class="play-again">Play Again</button>
         </div>
     </dialog>
-    <script src="./js/script.js"></script>
+    <script src="./script.js"></script>
 </body>
 </html>
