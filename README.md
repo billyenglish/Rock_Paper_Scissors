@@ -7,3 +7,7 @@
 <p>
 
 <h2>🚀 Features</h2>
+
+<ul>
+    <li>🧠 Computer generates a random move (Rock, Paper, or Scissors)</li>
+<ul>
