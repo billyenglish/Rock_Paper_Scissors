@@ -11,4 +11,5 @@
 <ul>
     <li>🧠 Computer generates a random move (Rock, Paper, or Scissors)</li>
     <li>🧍 Player selects a move using buttons</li>
+    <li>🏆 Displays the result of each round (Win, Lose, Draw)</li>
 <ul>
