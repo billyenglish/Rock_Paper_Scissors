@@ -17,3 +17,11 @@
 </ul>
 
 <h2>🛠️ Technologies Used</h2>
+
+<ul>
+    <li>HTML5</li>
+    <li>CSS3</li>
+    <li>JavaScript (DOM Manipulation & Event Handling)</li>
+</ul>
+
+<h2>🎮 How to Play</h2>
