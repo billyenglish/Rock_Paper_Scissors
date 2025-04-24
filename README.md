@@ -15,3 +15,5 @@
     <li>📊 Keeps track of player and computer scores</li>
     <li>🔁 Option to play multiple rounds</li>
 <ul>
+
+<h2>🛠️ Technologies Used</h2>
