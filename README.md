@@ -34,7 +34,7 @@
     <li>Keep playing as long as you want!</li>
 </ol>
 
-<a href="https://billyenglish.github.io/Rock_Paper_Scissors/">Live Demo</a>
+<a href="https://billyenglish.github.io/Rock_Paper_Scissors/">Live Demo: Play Rock Paper Scissors</a>
 
 <h2>📄 License</h2>
 
