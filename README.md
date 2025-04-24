@@ -25,3 +25,16 @@
 </ul>
 
 <h2>🎮 How to Play</h2>
+
+<ol>
+    <li>Open the game in your browser.</li>
+    <li>Click on one of the buttons: Rock, Paper, or Scissors.</li>
+    <li>The computer will randomly choose a move.</li>
+    <li>The result will be displayed along with updated scores.</li>
+    <li>Keep playing as long as you want!</li>
+</ol>
+
+
+
+
+
