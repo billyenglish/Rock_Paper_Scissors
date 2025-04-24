@@ -34,7 +34,7 @@
     <li>Keep playing as long as you want!</li>
 </ol>
 
-
+<h2>📄 License</h2>
 
 
 
